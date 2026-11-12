@@ -1,0 +1,19 @@
+{
+  "dateKST": "2026-11-12",
+  "repository": "jingeosal-ui/empty-seat-wedding-web",
+  "url": "https://github.com/jingeosal-ui/empty-seat-wedding-web",
+  "visibility": "private",
+  "defaultBranch": "main",
+  "sourceCommit": "02c6ef0620b346a72d893d9017118c95ab23640e",
+  "sourceTree": "c295d2e09c676be43106d7728bfdbcb1dad16e10",
+  "sourceFiles": 45,
+  "binaryFiles": 5,
+  "uploadMethod": "connected-github-tools",
+  "readBackVerified": ["README.md", "public/assets/characters/manifest.json", "docs/현장_카메라_시험안내.md"],
+  "privateVerifiedBy": ["creation-page", "repository-connector"],
+  "excluded": ["real-camera-images", "device-id-original-logs", "node_modules", "downloaded-models-and-sdk", ".env"],
+  "offlineLocalBundleStillIncludesModelsAndSDK": true,
+  "physicalSeatedTest": "deferred-by-user",
+  "naturalArmsRevealAnimation": "not-completed",
+  "note": "파일 업로드 검증이며 실제 관객 인식 정확도·가리개 실사 품질·현장 운영 검증이 아닙니다. 이 기록을 추가한 후속 문서 커밋은 sourceCommit과 별개입니다."
+}

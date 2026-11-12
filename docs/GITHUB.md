@@ -5,7 +5,7 @@
 
 2026-11-12: 사용자가 Chrome 로그인을 완료했습니다. 새 저장소 생성과 **Private** 설정을 실제 GitHub 페이지 및 연결 도구에서 확인했습니다. 주소: https://github.com/jingeosal-ui/empty-seat-wedding-web
 
-프로젝트 소스·승인 원본·시험 안내는 연결된 GitHub 도구로 스냅샷을 업로드합니다. 로컬 Git 이력도 보존합니다. Git 명령줄의 인증은 Chrome 로그인과 별개이며 현재 인증되지 않아 비밀번호나 토큰을 읽어 우회하지 않았습니다. 이후 Git으로 이어서 개발할 때는 공식 Git Credential Manager에서 직접 인증한 다음 저장소를 새로 복제하는 방법을 권장합니다.
+프로젝트 소스·승인 원본·시험 안내45개 파일을 연결된 GitHub 도구로 업로드하고 main의 README·캐릭터 manifest·현장 시험 안내를 다시 읽어 확인했습니다. 로컬 Git 이력도 보존합니다. 원격은 연결 도구로 만든 스냅샷 이력이므로 이전 로컬 이력과 다릅니다. Git 명령줄의 인증은 Chrome 로그인과 별개이며 현재 인증되지 않아 비밀번호나 토큰을 읽어 우회하지 않았습니다. 이후 Git으로 이어서 개발할 때는 공식 Git Credential Manager에서 직접 인증한 다음 저장소를 새로 복제하는 방법을 권장합니다.
 
 ```powershell
 git clone https://github.com/jingeosal-ui/empty-seat-wedding-web.git
