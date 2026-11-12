@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-12T00:15:52.648Z",
+  "pass": true,
+  "resourceHEADChecks": 11,
+  "missing404": true,
+  "writeRejected405": true,
+  "byteRange206": true,
+  "scope": "복사된 배포본 로컬 HTTP 확인. 실제 관객 또는 시각 연출 검사 아님."
+}

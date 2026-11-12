@@ -1,0 +1,10 @@
+import {cp,mkdir,readdir,stat,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..');
+const target=process.argv[2]?path.resolve(process.argv[2]):path.join(root,'release','빈자리의혼례_웹캠_C');
+if(target===root||root.startsWith(target+path.sep))throw Error('원본 또는 상위 폴더를 배포 대상으로 사용할 수 없습니다.');
+await mkdir(target,{recursive:true});
+for(const name of ['public','server.mjs','README.md','START_EXHIBITION.cmd','package.json','package-lock.json','licenses','docs','tools','tests','sources','.gitignore'])await cp(path.join(root,name),path.join(target,name),{recursive:true,filter:src=>!['vision_wasm_module_internal.js','vision_wasm_module_internal.wasm','vision_bundle.mjs'].includes(path.basename(src))});
+let bytes=0,files=0;async function walk(dir){for(const n of await readdir(dir)){const p=path.join(dir,n),s=await stat(p);if(s.isDirectory())await walk(p);else{bytes+=s.size;files++;}}}await walk(target);
+await writeFile(path.join(root,'docs/package-validation.json'),JSON.stringify({at:new Date().toISOString(),path:target,files,bytes,nodeModulesIncluded:false,offlineResourcesIncluded:true},null,2));
+console.log(JSON.stringify({path:target,files,MiB:(bytes/1048576).toFixed(2)}));

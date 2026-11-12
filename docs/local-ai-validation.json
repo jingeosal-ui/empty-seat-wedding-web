@@ -1,0 +1,40 @@
+{
+  "createdAt": "2026-11-12T00:08:01.294Z",
+  "test": "black-frame-local-model-worker",
+  "physicalCamera": false,
+  "frames": 36,
+  "loadMs": 1021.2000000029802,
+  "metrics": {
+    "render": {
+      "samples": 880,
+      "meanMs": 8.323674999999998,
+      "p95Ms": 8.5,
+      "p99Ms": 8.600000000002183,
+      "maxMs": 8.80000000000291,
+      "over50": 0,
+      "over100": 0,
+      "fps": 120.13924138076032
+    },
+    "inference": {
+      "samples": 36,
+      "meanMs": 91.46944444419609,
+      "p95Ms": 116.29999999701977,
+      "p99Ms": 138.79999999701977,
+      "maxMs": 588.7999999970198,
+      "over50": 35,
+      "over100": 5
+    },
+    "mainThreadHeap": {
+      "usedBytes": 1355251,
+      "totalBytes": 2419335,
+      "limitBytes": 4395630592,
+      "scope": "Chrome 참고값: Worker·GPU·전체 프로세스 메모리 제외"
+    },
+    "events": [],
+    "longTasks": [],
+    "durationMs": 7341.100000008941,
+    "note": "표시 중인 탭의 requestAnimationFrame 간격. 실제 패널 표시·물리 카메라 지연·관객 인식 정확도와 다름."
+  },
+  "pass": true,
+  "falsePositiveFrames": 0
+}

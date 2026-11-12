@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "approvedOn": "2026-11-12",
+  "artStatus": "layer-preview",
+  "note": "승인된 시트의 정면 전신만 추출. 손·팔 가리개 내림 실사 영상 미등록. 원본 외형 재생성 없음.",
+  "actors": {
+    "songaksi": {
+      "name": "손각시",
+      "body": "/assets/characters/songaksi.webp",
+      "width": 393,
+      "height": 1013,
+      "cover": {
+        "top": 0.065,
+        "height": 0.125,
+        "width": 0.76,
+        "drop": 0.34
+      },
+      "headPivot": 0.19,
+      "revealVideo": null,
+      "sourceHash": "bc3f97108f1f1bd7f8747465a5b4e096e5f924112a27ce90ffa57899e9cb5b82",
+      "webpHash": "ff37c929aab56fca1046e15ace77f2863d33ad6828847930b6ee41a3b10199d4",
+      "sourceCrop": {
+        "left": 15,
+        "top": 0,
+        "width": 485,
+        "height": 1024
+      },
+      "bytes": 141490
+    },
+    "mongdal": {
+      "name": "몽달귀신",
+      "body": "/assets/characters/mongdal.webp",
+      "width": 409,
+      "height": 1008,
+      "cover": {
+        "top": 0.09,
+        "height": 0.13,
+        "width": 0.8,
+        "drop": 0.33
+      },
+      "headPivot": 0.22,
+      "revealVideo": null,
+      "sourceHash": "aa9a8af22f259efc263c4f697b83036cc1b024becbc282cb56d680abfa94ee22",
+      "webpHash": "25b9cf58453e58780b9bbb8aa0ae16c754de2c508888077c955fcbbdd33159e3",
+      "sourceCrop": {
+        "left": 0,
+        "top": 0,
+        "width": 455,
+        "height": 1024
+      },
+      "bytes": 139458
+    }
+  }
+}

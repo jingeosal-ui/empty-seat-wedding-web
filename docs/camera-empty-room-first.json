@@ -1,0 +1,66 @@
+{
+  "createdAt": "2026-11-12T00:06:45.751Z",
+  "camera": {
+    "state": "live",
+    "frames": 5490,
+    "settings": {
+      "aspectRatio": 1.7777777777777777,
+      "brightness": 0,
+      "colorTemperature": 6500,
+      "contrast": 0,
+      "exposureCompensation": 1,
+      "exposureMode": "continuous",
+      "exposureTime": 156.25,
+      "facingMode": "user",
+      "frameRate": 30,
+      "height": 720,
+      "resizeMode": "none",
+      "saturation": 0,
+      "sharpness": 0,
+      "whiteBalanceMode": "continuous",
+      "width": 1280
+    }
+  },
+  "ai": {
+    "state": "ready",
+    "error": ""
+  },
+  "metrics": {
+    "render": {
+      "samples": 18000,
+      "meanMs": 8.492472222221988,
+      "p95Ms": 8.5,
+      "p99Ms": 16.60000000000582,
+      "maxMs": 25.200000000004366,
+      "over50": 0,
+      "over100": 0,
+      "fps": 117.75134187467003
+    },
+    "inference": {
+      "samples": 1415,
+      "meanMs": 88.28346289730113,
+      "p95Ms": 120.79999999701977,
+      "p99Ms": 149.5,
+      "maxMs": 653.4000000059605,
+      "over50": 1412,
+      "over100": 357
+    },
+    "events": [
+      {
+        "type": "assets-ready",
+        "at": 133.5
+      },
+      {
+        "type": "ai-ready",
+        "at": 14190.199999988079,
+        "delegate": "CPU"
+      }
+    ],
+    "longTasks": [],
+    "durationMs": 200145.60000000894,
+    "note": "표시 중인 탭의 requestAnimationFrame 간격. 실제 패널 표시·물리 카메라 지연·관객 인식 정확도와 다름."
+  },
+  "artStatus": "layer-preview",
+  "physicalCameraValidation": "operator-required",
+  "note": "사진·영상·얼굴 특징·관절 시계열은 포함하지 않습니다. 초기 200초 중 화면 간격은 마지막 18000개 표본. 빈 방 시험으로 실제 착석 정확도 검증 아님. 이후 분석 스케줄 개선 전 결과."
+}
