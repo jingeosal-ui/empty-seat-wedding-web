@@ -4,7 +4,7 @@
 
 ## 실행
 
-Windows PC에 Chrome과 **Node.js 22 이상**을 한 번 설치하세요. 배포 폴더 전체를 복사한 뒤 `START_EXHIBITION.cmd`를 더블클릭합니다. npm 설치 없이 실행됩니다. Chrome에서 `http://localhost:4173/`가 열립니다. 주소가 열리지 않으면 `http://127.0.0.1:4173/`를 입력하세요. 서버 창은 전시 중 열어 둡니다. 종료는 서버 창에서 Ctrl+C입니다.
+**설치 없는 배포본:** Windows x64 PC에 Chrome이 있으면 됩니다. Node나 npm 설치는 필요 없습니다. `빈자리의혼례_웹캠_C_설치없이실행.zip`을 모두 압축 풀기한 뒤 폴더의 **`00_전시시작.cmd`**를 더블클릭하세요. `START_EXHIBITION.cmd`도 같은 실행기입니다. Chrome에서 `http://localhost:4173/`가 열립니다. 주소가 열리지 않으면 `http://127.0.0.1:4173/`를 입력하세요. 서버 창은 전시 중 열어 둡니다. 종료는 서버 창에서 Ctrl+C입니다.
 
 1. **카메라 시작**을 누르고 Chrome의 카메라 권한을 허용합니다. 실제 프레임이 도착해야 ‘카메라 연결됨’이 표시됩니다.
 2. 설정에서 사용할 카메라와 해상도를 선택합니다. 선택을 바꾸면 ‘저장하고 카메라 다시 연결’을 누릅니다.
@@ -40,7 +40,7 @@ Windows PC에 Chrome과 **Node.js 22 이상**을 한 번 설치하세요. 배포
 - `sources/approved`: 승인된 원본 2개, `licenses`: 출처·버전·해시
 - `docs/PROGRESS.md`: 확인 결과와 미검증 항목
 
-개발 재현은 `npm ci`, `npm run setup`, `npm run assets`, `npm test`, `npm run verify` 순서입니다. 처음 리소스를 준비할 때만 인터넷이 필요합니다. `npm run package`는 node_modules 없이 오프라인 리소스를 포함한 배포 폴더를 만듭니다. 이미 받은 배포본은 이 준비 과정이 필요 없습니다. 비공개 저장소는 https://github.com/jingeosal-ui/empty-seat-wedding-web 이며 연결 기록은 `docs/GITHUB.md`를 참조하세요. 실제 관객 시험 순서와 기록표는 `docs/현장_카메라_시험안내.md`에 있습니다.
+소스 제작 환경에서는 Node.js 22 이상이 필요합니다. 개발 재현은 `npm ci`, `npm run setup`, `npm run assets`, `npm test`, `npm run verify` 순서입니다. 이어 `npm run prepare-runtime`, `npm run package`로 설치 없는 배포본을 만듭니다. 처음 리소스를 준비할 때만 인터넷이 필요합니다. 배포본에는 실제 사용하는 Node 실행 파일·라이선스·모델·SDK를 포함하고 npm/node_modules/Git 이력/제작 원본 중복을 제외합니다. 이미 받은 배포본은 이 준비 과정이 필요 없습니다. 비공개 저장소는 https://github.com/jingeosal-ui/empty-seat-wedding-web 이며 연결 기록은 `docs/GITHUB.md`를 참조하세요. 실제 관객 시험 순서와 기록표는 `docs/현장_카메라_시험안내.md`에 있습니다. 설치 없는 버전의 상세 안내는 `docs/PORTABLE_RUNTIME.md`입니다.
 
 ## 현장 검증
 

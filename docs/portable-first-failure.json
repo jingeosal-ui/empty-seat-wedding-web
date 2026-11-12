@@ -1,0 +1,10 @@
+{
+  "dateKST": "2026-11-12",
+  "pass": false,
+  "stage": "first-portable-launcher-test",
+  "runtimeVersionAndHashVerified": true,
+  "launcherHTTPServerStarted": false,
+  "reason": "UTF-8 LF 시작 파일을 Windows cmd가 잘못 해석하여 명령 조각 오류로 종료",
+  "fix": "배포 시 두 .cmd 파일을 CRLF로 명시 변환하고 .gitattributes에도 Windows 줄바꿈 지정",
+  "followup": "portable-validation.json의 수정 후 재검증과 구분"
+}

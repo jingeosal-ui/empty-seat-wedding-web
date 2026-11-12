@@ -12,3 +12,7 @@ git clone https://github.com/jingeosal-ui/empty-seat-wedding-web.git
 ```
 
 비밀번호·토큰을 코드나 대화에 붙여 넣지 않습니다. 원본 승인 시트와 전신 WebP는 포함하고, 실제 카메라 화면·개인장치 ID 원기록·node_modules·다운로드 SDK·AI 모델은 Git에서 제외합니다. 다운로드 리소스는 `npm ci` 후 `npm run setup`으로 재현합니다. **오프라인 배포 폴더에는 모델·SDK가 이미 포함되므로 GitHub나 인터넷에 접속할 필요가 없습니다.** 실제 관객 시험은 `현장_카메라_시험안내.md`를 따릅니다. 최종 업로드 확인 기록은 `github-validation.json`을 참조하세요.
+
+## 설치 없는 배포본
+
+추가된 `npm run prepare-runtime`은 공식 Node 실행 환경과 라이선스를 준비하고 `npm run package`는 이를 포함한 Windows x64 실행 폴더를 만듭니다. 실행 파일과 완성 ZIP은 Git에 중복 커밋하지 않습니다. 제작자는 처음 준비할 때 Node를 사용하지만 **전시용 PC는 완성 ZIP을 풀기만 하면 Node를 설치하지 않고 실행**합니다. 완성 ZIP과 GitHub의 소스 ZIP은 구성과 목적이 다릅니다.

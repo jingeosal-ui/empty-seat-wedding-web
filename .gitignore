@@ -7,3 +7,5 @@ test-results/
 public/vendor/
 public/models/
 .env*
+runtime/
+*.zip

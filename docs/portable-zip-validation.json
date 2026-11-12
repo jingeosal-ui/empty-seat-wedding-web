@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-12T02:24:20.9000632Z",
+  "pass": true,
+  "zip": "C:\\Users\\이대일\\OneDrive\\바탕 화면\\이진우\\제품개발학기제\\이진우 손각시 몽달귀신\\빈자리의혼례_웹캠_C_설치없이실행.zip",
+  "bytes": 52943819,
+  "sha256": "a88a8fa927b797962bf9761783479905a0988609e6f0e03080e703e4008c14b1",
+  "payloadFilesVerified": 42,
+  "allPayloadSHA256Equal": true,
+  "note": "압축을 읽어 모든 파일을 원본과 SHA-256 비교. 실제 다른 PC/카메라 검증 아님."
+}

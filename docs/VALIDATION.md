@@ -19,6 +19,9 @@
 | 반복 관객 운용 | 코드 검사 통과·현장 미검증 | 유예/퇴장/중복방지/빈 자리 재무장 로직 확인 |
 | 메모리 | 제한적 참고 측정 | 검은프레임 점검 JS heap약1.36MB는 메인 JS만, 모델·Worker·GPU·전체 프로세스 제외 |
 | 원격 GitHub | 비공개 저장소 생성 확인 | 사용자 로그인 후 Private 생성 확인. 최종 업로드 확인은 github-validation.json 참조 |
+| Node 별도 설치 없이 시작 | 확인 | PATH에서 시스템 Node 제외, 동봉 v26.13.1 실행기로2회 서버 실행·필수 리소스10개씩 확인. portable-validation.json |
+| Windows 실행 파일 출처 | 확인 | 공식 SHA-256 일치 및 OpenJS Foundation Authenticode Valid. 전체 라이선스 동봉 |
+| 공유 ZIP | 파일 단위 검증 | portable-zip-validation.json 참고. 실제 다른 물리 PC 시험과 구분 |
 
 성능 원자료/수치: `camera-empty-room-first.json`, `local-ai-validation.json`. 최초 카메라 기록은 초기200초 중 마지막18,000개 화면 표본이므로 초기준비 지연 전체를 대표하지 않습니다. 추론 최대653ms와 화면 최대25.2ms는 서로 다른 단계의 수치입니다. 검은프레임 모델 준비1021ms는 캐시된 재방문 실행으로 첫 설치 준비 시간과 다릅니다. 유료 생성/실시간 생성AI를 사용하지 않았습니다.
 

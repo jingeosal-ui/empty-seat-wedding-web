@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-12T02:00:28.602Z",
+  "pass": true,
+  "version": "v26.13.1",
+  "nodeExeSHA256": "f5109dc868ec38703ad8f305e0aceece717cb60d4889873f434017af4e96cccb",
+  "systemNodeOnPATH": false,
+  "nodeOptionsCleared": true,
+  "executedRuntime": "runtime/node-win-x64/node.exe",
+  "launcher": "START_EXHIBITION.cmd --no-browser",
+  "runs": [
+    {
+      "cycle": 1,
+      "pass": true,
+      "startupMs": 884.5225,
+      "resourcesChecked": 10,
+      "bundledRuntimeNotWebServed": true
+    },
+    {
+      "cycle": 2,
+      "pass": true,
+      "startupMs": 735.9373000000005,
+      "resourcesChecked": 10,
+      "bundledRuntimeNotWebServed": true
+    }
+  ],
+  "physicalSeatedCameraTest": false,
+  "fullGhostVisualRetest": false,
+  "defaultLauncher": "00_전시시작.cmd",
+  "chromeOpenedWithSystemNodeRemovedFromPATH": true,
+  "startupScreenObserved": true,
+  "startupCameraState": "off",
+  "note": "시스템 Node 경로를 제외한 환경에서 복사한 배포본 실행기를 두 번 실행. 다른 물리 PC·실제 관객 정확도·손/팔 동작 검증과 구분."
+}

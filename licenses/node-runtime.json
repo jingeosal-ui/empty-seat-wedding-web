@@ -1,0 +1,13 @@
+{
+  "version": "v26.13.1",
+  "platform": "win32",
+  "arch": "x64",
+  "binary": "node.exe",
+  "bytes": 100089160,
+  "sha256": "f5109dc868ec38703ad8f305e0aceece717cb60d4889873f434017af4e96cccb",
+  "binaryURL": "https://nodejs.org/dist/v26.13.1/win-x64/node.exe",
+  "checksumsURL": "https://nodejs.org/dist/v26.13.1/SHASUMS256.txt",
+  "licenseURL": "https://raw.githubusercontent.com/nodejs/node/v26.13.1/LICENSE",
+  "preparedAt": "2026-11-12T01:57:03.488Z",
+  "note": "npm·설치 프로그램 없이 공식 실행 파일과 전체 라이선스만 동봉"
+}
