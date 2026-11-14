@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "artStatus": "walking-reveal-film-v2",
+  "made": "2026-11-12",
+  "note": "가상 귀신 AI 제작 원본. 실제 걷기/양손 가리개 동작. 고정 시점. 런타임 AI 생성/절차적 이동 확대 없음. Veo표시 보존.",
+  "actors": {
+    "songaksi": {
+      "name": "손각시",
+      "width": 576,
+      "height": 1024,
+      "files": {
+        "walk": {
+          "bytes": 4370556,
+          "sha256": "495d7801658fcfb3e0c1a5c02d11bdd532355077929e9212f218c9943d192be6"
+        },
+        "reveal": {
+          "bytes": 3632711,
+          "sha256": "0d418a8520d71a271394c89c89edb0fc35d4df570a6f04d72bc71782eef657ee"
+        },
+        "poster": {
+          "bytes": 96946,
+          "sha256": "31835f772ee7e59bbbc606036d58812443cf8311ef41bf0a7522b5ffcc50ffd4"
+        }
+      },
+      "walk": "/assets/film/songaksi_walk.webm",
+      "reveal": "/assets/film/songaksi_reveal.webm",
+      "poster": "/assets/film/songaksi_poster.webp"
+    },
+    "mongdal": {
+      "name": "몽달귀신",
+      "width": 576,
+      "height": 1024,
+      "files": {
+        "walk": {
+          "bytes": 5063091,
+          "sha256": "a7debdf59b9377383db5cdf9a26284d782771ea03444531127eb486f1129c75d"
+        },
+        "reveal": {
+          "bytes": 3930119,
+          "sha256": "5226c6f3770bff9083b8e38a336c96f7d60f8b12964616e46b63f2b4b261af48"
+        },
+        "poster": {
+          "bytes": 93940,
+          "sha256": "5650c22e636f9bb26821f4d675c615a84797abb0508c2013bb310bed588e6058"
+        }
+      },
+      "walk": "/assets/film/mongdal_walk.webm",
+      "reveal": "/assets/film/mongdal_reveal.webm",
+      "poster": "/assets/film/mongdal_poster.webp"
+    }
+  }
+}
