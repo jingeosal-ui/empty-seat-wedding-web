@@ -22,9 +22,9 @@ export class Interaction {
    case 'APPROACH':if(!input.present||!ready)this.change('IDLE',now);else if(input.seated&&!this.latched){this.manual=false;this.cycleStart=now;this.change('SEATED',now);}break;
    case 'SEATED':if(!input.seated||!ready)this.change('APPROACH',now);else if(elapsed>=.2){this.latched=true;this.change('WAITING',now);}break;
    case 'WAITING':if(elapsed>=t.waiting)this.change('GHOST_ENTER',now);break;
-   case 'GHOST_ENTER':if(elapsed>=t.enter)this.change('GHOST_HOLD',now);break;
+   case 'GHOST_ENTER':if(elapsed>=t.enter&&input.walkComplete!==false)this.change('GHOST_HOLD',now);break;
    case 'GHOST_HOLD':if(elapsed>=t.hold)this.change('GHOST_REVEAL',now);break;
-   case 'GHOST_REVEAL':if(elapsed>=t.reveal+t.offset)this.change('GHOST_WATCH',now);break;
+   case 'GHOST_REVEAL':if(elapsed>=t.reveal+t.offset&&input.revealComplete!==false)this.change('GHOST_WATCH',now);break;
    case 'GHOST_WATCH':if(elapsed>=t.watch)this.exit(now,'show-timeout');break;
    case 'EXIT':if(elapsed>=t.exit){this.manual=false;this.exitPose=null;this.change('RESET',now);}break;
    case 'RESET':if(elapsed>=t.reset)this.change('IDLE',now);break;
@@ -33,7 +33,7 @@ export class Interaction {
  visual(now){
   const t=this.config.timing,s=this.state,elapsed=Math.max(0,(now-this.since)/1000);
   let opacity=0,enter=0,bride=0,groom=0,watch=0;
-  if(s==='GHOST_ENTER'){opacity=ease(elapsed/t.enter);enter=opacity;}
+  if(s==='GHOST_ENTER'){opacity=ease(elapsed/(t.fadeIn||t.enter));enter=ease(elapsed/t.enter);}
   if(['GHOST_HOLD','GHOST_REVEAL','GHOST_WATCH'].includes(s)){opacity=1;enter=1;}
   if(s==='GHOST_REVEAL'){bride=ease(elapsed/t.reveal);groom=ease((elapsed-t.offset)/t.reveal);}
   if(s==='GHOST_WATCH'){bride=1;groom=1;watch=ease(elapsed/3);}

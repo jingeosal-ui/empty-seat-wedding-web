@@ -1,4 +1,5 @@
 import { ease } from './interaction.mjs';
+import {appURL} from './paths.mjs';
 const loadImage=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(`이미지 읽기 실패: ${src}`));im.src=src;});
 function parchment(){
  const c=document.createElement('canvas');c.width=300;c.height=110;const x=c.getContext('2d');
@@ -9,9 +10,10 @@ function parchment(){
 export class Scene {
  constructor(container,onError){this.container=container;this.onError=onError;this.actors={};this.ready=false;this.lastState='IDLE';this.generation=0;this.artStatus='layer-preview';}
  async init(){
-  const response=await fetch('/assets/characters/manifest.json');if(!response.ok)throw Error('캐릭터 목록이 없습니다. npm run assets를 실행하세요.');
+  const response=await fetch(appURL('assets/characters/manifest.json'));if(!response.ok)throw Error('캐릭터 목록이 없습니다. npm run assets를 실행하세요.');
   this.manifest=await response.json();
   for(const [name,spec] of Object.entries(this.manifest.actors)){
+   spec.body=appURL(spec.body);if(spec.revealVideo)spec.revealVideo=appURL(spec.revealVideo);
    await loadImage(spec.body);
    const el=document.createElement('div');el.className='actor';el.dataset.actor=name;
    const body=document.createElement('img');body.className='actor-body';body.src=spec.body;body.alt='';

@@ -1,9 +1,10 @@
 import {Metrics} from './lib/metrics.mjs';
+import {appURL} from './lib/paths.mjs';
 const report=document.getElementById('report'),button=document.getElementById('run');let data;
 button.onclick=async()=>{
  button.disabled=true;report.textContent='로컬 모델을 준비합니다…';const started=performance.now(),metrics=new Metrics();let ticking=true;
  const frame=t=>{if(!ticking)return;metrics.frame(t,false);requestAnimationFrame(frame);};requestAnimationFrame(frame);
- const worker=new Worker('/vision-worker.js');let timer=setTimeout(()=>finish({pass:false,error:'모델 준비/실행 시간 초과'}),60000),seq=0,results=[];
+ const worker=new Worker(appURL('vision-worker.js'));let timer=setTimeout(()=>finish({pass:false,error:'모델 준비/실행 시간 초과'}),60000),seq=0,results=[];
  function finish(extra){clearTimeout(timer);ticking=false;worker.terminate();data={createdAt:new Date().toISOString(),test:'black-frame-local-model-worker',physicalCamera:false,frames:results.length,loadMs:loadMs??null,metrics:metrics.snapshot(),...extra};report.textContent=JSON.stringify(data,null,2);button.disabled=false;document.getElementById('save').disabled=false;}
  let loadMs;
  async function send(){const canvas=new OffscreenCanvas(640,360),ctx=canvas.getContext('2d');ctx.fillStyle='#000';ctx.fillRect(0,0,640,360);const bitmap=canvas.transferToImageBitmap();worker.postMessage({type:'frame',bitmap,seq:seq++,sourceMs:performance.now()},[bitmap]);}

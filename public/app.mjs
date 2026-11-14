@@ -3,7 +3,7 @@ import {Camera} from './lib/camera.mjs';
 import {Vision} from './lib/vision.mjs';
 import {SeatDetector,reasons} from './lib/seat.mjs';
 import {Interaction,phaseNames} from './lib/interaction.mjs';
-import {Scene} from './lib/scene.mjs';
+import {Scene} from './lib/scene-film.mjs';
 import {Metrics} from './lib/metrics.mjs';
 const $=id=>document.getElementById(id);
 let config=loadConfig(),seat=new SeatDetector(config),lastSeat=seat.lastResult,lastPose=null,lastAI=0,aiState='off',aiError='',cameraInfo=null,editing=false,dragStart=null,adminOpen=false,baselineBusy=false,noticeTimer=null,lastDebug=0;
@@ -131,7 +131,7 @@ $('importSettings').onchange=async e=>{try{const f=e.target.files[0];if(!f)retur
 $('resetDefaults').onclick=()=>{applyConfig(structuredClone(defaults));notify('기본값으로 복원했습니다. 의자 영역을 다시 지정하세요.');};
 $('resetShow').onclick=()=>interaction.reset(performance.now());$('stopCamera').onclick=()=>{vision.stop();camera.stop();aiState='off';seat.reset();lastSeat=seat.lastResult;interaction.reset(performance.now());$('startCard').hidden=false;closeSettings();};
 $('toggleDebug').onclick=()=>{config.debug=!config.debug;$('debug').hidden=!config.debug;};
-$('downloadLog').onclick=()=>exportJSON('빈자리의혼례_검증기록.json',{createdAt:new Date().toISOString(),camera:{state:camera.state,frames:camera.frameCount,settings:cameraInfo?.settings||null},ai:{state:aiState,error:aiError},metrics:metrics.snapshot(),artStatus:scene.artStatus,physicalCameraValidation:'operator-required',note:'사진·영상·얼굴 특징·관절 시계열은 포함하지 않습니다.'});
+$('downloadLog').onclick=()=>exportJSON('빈자리의혼례_검증기록.json',{createdAt:new Date().toISOString(),camera:{state:camera.state,frames:camera.frameCount,settings:cameraInfo?.settings||null},ai:{state:aiState,error:aiError},metrics:metrics.snapshot(),media:scene.snapshot(),artStatus:scene.artStatus,physicalCameraValidation:'operator-required',note:'사진·영상·얼굴 특징·관절 시계열은 포함하지 않습니다.'});
 $('resetMetrics').onclick=()=>{metrics.clear();notify('이 시점부터 화면·AI 성능을 새로 측정합니다.');};
 for(const name of ['songaksi','mongdal']){
  $(name+'Image').onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=URL.createObjectURL(f);try{interaction.reset(performance.now());await scene.setImage(name,url);notify('이미지를 이번 실행에 적용했습니다. 외곽·크기·얼굴을 확인하세요.');}catch(err){URL.revokeObjectURL(url);notify(err.message,true);}};
@@ -151,7 +151,7 @@ window.addEventListener('beforeunload',()=>{vision.stop();camera.stop();});
 let previousState=interaction.state;
 function loop(now){
  metrics.frame(now,document.hidden);const live=camera.check(now),fresh=Boolean(lastPose&&now-lastPose.sourceMs<=config.detection.staleMs);
- const input={cameraLive:live,aiReady:vision.ready&&scene.ready,fresh,present:fresh&&lastSeat.present,occupied:fresh&&lastSeat.occupied,seated:fresh&&lastSeat.seated&&!adminOpen&&!editing};
+ const input={cameraLive:live,aiReady:vision.ready&&scene.ready,fresh,present:fresh&&lastSeat.present,occupied:fresh&&lastSeat.occupied,seated:fresh&&lastSeat.seated&&!adminOpen&&!editing,...scene.gate()};
  interaction.tick(now,input);scene.render(now,interaction.visual(now),config,interaction.state);
  $('manualBanner').hidden=!interaction.manual;
  if(previousState!==interaction.state){if(interaction.state==='IDLE'&&!live)$('startCard').hidden=false;previousState=interaction.state;}
@@ -164,5 +164,5 @@ function loop(now){
  requestAnimationFrame(loop);
 }
 fillForm();$('debug').hidden=!config.debug;
-scene.init().then(()=>{metrics.event({type:'assets-ready',at:performance.now()});}).catch(e=>{notify(e.message,true);$('startupMessage').textContent=e.message;});
+scene.init().then(()=>{$('artStatus').textContent='승인 캐릭터의 실제 걷기·양손 가리개 영상 연결됨 · 현장 카메라 보정 필요';metrics.event({type:'assets-ready',at:performance.now()});}).catch(e=>{notify(e.message,true);$('startupMessage').textContent=e.message;});
 refreshDevices();requestAnimationFrame(loop);

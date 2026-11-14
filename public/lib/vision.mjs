@@ -1,3 +1,4 @@
+import {appURL} from './paths.mjs';
 export class Vision {
  constructor(video,onEvent){this.video=video;this.onEvent=onEvent;this.worker=null;this.ready=false;this.busy=false;this.lastSent=0;this.lastResult=null;this.seq=0;this.generation=0;this.timer=null;this.lastFaceAt=0;this.lastFace=false;this.errorCount=0;}
  stop(){this.generation++;clearInterval(this.timer);this.worker?.terminate();this.worker=null;this.ready=false;this.busy=false;this.lastResult=null;this.lastFace=false;this.lastFaceAt=0;this.lastVideoTime=-1;}
@@ -5,7 +6,7 @@ export class Vision {
   this.stop();this.config=config;const generation=this.generation;
   this.onEvent({type:'loading'});
   try{
-   this.worker=new Worker('/vision-worker.js');
+   this.worker=new Worker(appURL('vision-worker.js'));
    this.worker.onmessage=e=>{
     if(generation!==this.generation)return;const m=e.data;
     if(m.type==='ready'){this.ready=true;this.errorCount=0;this.onEvent(m);}

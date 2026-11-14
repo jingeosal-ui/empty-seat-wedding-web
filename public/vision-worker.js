@@ -2,18 +2,19 @@
 let pose=null,face=null,ready=false,frameIndex=0,lastStamp=-1;
 let config={sensitivity:.55};
 let lumaCanvas=null,lumaCtx=null;
+const appURL=resource=>new URL(resource,self.location.href).href;
 self.onmessage=async event=>{
  const m=event.data;
  if(m.type==='init'){
   try{
-   importScripts('/vendor/vision_bundle.js');
+   importScripts(appURL('vendor/vision_bundle.js'));
    const lib=self.Vision||self.vision;
    if(!lib?.FilesetResolver)throw Error('MediaPipe 번들을 읽지 못했습니다.');
    config=m.config||config;
-   const files=await lib.FilesetResolver.forVisionTasks('/vendor/wasm');
+   const files=await lib.FilesetResolver.forVisionTasks(appURL('vendor/wasm'));
    const min=.65-config.sensitivity*.35;
-   pose=await lib.PoseLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:'/models/pose_landmarker_lite.task',delegate:'CPU'},runningMode:'VIDEO',numPoses:1,minPoseDetectionConfidence:min,minPosePresenceConfidence:min,minTrackingConfidence:.45,outputSegmentationMasks:false});
-   face=await lib.FaceLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:'/models/face_landmarker.task',delegate:'CPU'},runningMode:'VIDEO',numFaces:1,minFaceDetectionConfidence:.45,minFacePresenceConfidence:.45,minTrackingConfidence:.45,outputFaceBlendshapes:false,outputFacialTransformationMatrixes:true});
+   pose=await lib.PoseLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:appURL('models/pose_landmarker_lite.task'),delegate:'CPU'},runningMode:'VIDEO',numPoses:1,minPoseDetectionConfidence:min,minPosePresenceConfidence:min,minTrackingConfidence:.45,outputSegmentationMasks:false});
+   face=await lib.FaceLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:appURL('models/face_landmarker.task'),delegate:'CPU'},runningMode:'VIDEO',numFaces:1,minFaceDetectionConfidence:.45,minFacePresenceConfidence:.45,minTrackingConfidence:.45,outputFaceBlendshapes:false,outputFacialTransformationMatrixes:true});
    lumaCanvas=new OffscreenCanvas(32,18);lumaCtx=lumaCanvas.getContext('2d',{willReadFrequently:true});
    ready=true;postMessage({type:'ready',delegate:'CPU',face:true,pose:true});
   }catch(e){postMessage({type:'error',message:String(e?.message||e)});}

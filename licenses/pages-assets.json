@@ -1,0 +1,32 @@
+[
+  {
+    "path": "vendor/vision_bundle.js",
+    "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.2.3/vision_bundle.js",
+    "bytes": 156016,
+    "sha256": "9c2d4373d0f50dfcc91b07b6a884a74c42e163e067757b40fcf24b0edf800f3d"
+  },
+  {
+    "path": "vendor/wasm/vision_wasm_internal.js",
+    "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.2.3/wasm/vision_wasm_internal.js",
+    "bytes": 336624,
+    "sha256": "2aa5fd3fdd3d8208cd7587df0bb19fb6925c4ea16a76dd025aedc1f64d6a6309"
+  },
+  {
+    "path": "vendor/wasm/vision_wasm_internal.wasm",
+    "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.2.3/wasm/vision_wasm_internal.wasm",
+    "bytes": 14665716,
+    "sha256": "225bc06c0f51a9cf31fea0e9e0b0243e9e01fb5ef332cc1a7fa6656dbdfdaabf"
+  },
+  {
+    "path": "models/pose_landmarker_lite.task",
+    "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+    "bytes": 5777746,
+    "sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a"
+  },
+  {
+    "path": "models/face_landmarker.task",
+    "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+    "bytes": 3758596,
+    "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+  }
+]

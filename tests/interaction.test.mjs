@@ -62,9 +62,17 @@ test('30·60·144 FPS에서 시퀀스 길이 오차는 프레임 양자화 범�
  const finish=[];for(const fps of [30,60,144]){
   const i=new Interaction(config());i.preview(0);let end=0;
   for(let t=0;t<40000;t+=1000/fps){i.tick(t,yes);if(i.state==='RESET'){end=t;break;}}
-  assert.ok(end>=23800&&end<24100);finish.push(end);
+  const expected=['waiting','enter','hold','reveal','offset','watch','exit'].reduce((n,k)=>n+defaults.timing[k],0)*1000;
+  assert.ok(end>=expected&&end<expected+300);finish.push(end);
  }
  assert.ok(Math.max(...finish)-Math.min(...finish)<300);
+});
+test('영상이 아직 끝나지 않았으면 걷기/공개 다음 상태로 넘어가지 않는다',()=>{
+ const c=config(),i=new Interaction(c);i.manual=true;i.cycleStart=0;i.change('GHOST_ENTER',0);
+ i.tick(c.timing.enter*1000+100,{...yes,walkComplete:false});assert.equal(i.state,'GHOST_ENTER');
+ i.tick(c.timing.enter*1000+200,{...yes,walkComplete:true});assert.equal(i.state,'GHOST_HOLD');
+ i.change('GHOST_REVEAL',10000);i.tick(10000+(c.timing.reveal+c.timing.offset)*1000+100,{...yes,revealComplete:false});assert.equal(i.state,'GHOST_REVEAL');
+ i.tick(10000+(c.timing.reveal+c.timing.offset)*1000+200,{...yes,revealComplete:true});assert.equal(i.state,'GHOST_WATCH');
 });
 test('설정 가져오기는 범위를 제한한다',()=>{
  const c=sanitize({timing:{maxSession:-1},roi:{x:.99,y:.99,w:4,h:4},camera:{width:99999},detection:{fps:100}});

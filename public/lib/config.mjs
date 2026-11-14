@@ -1,8 +1,8 @@
 export const defaults = {
-  schema:1, calibrationDeviceId:'', camera:{deviceId:'',width:1280,height:720,fps:30},
+  schema:2, calibrationDeviceId:'', camera:{deviceId:'',width:1280,height:720,fps:30},
   roi:{x:.32,y:.42,w:.36,h:.38,configured:false},
   detection:{fps:12,width:640,sensitivity:.55,holdMs:1800,stability:.035,leaveMs:2200,staleMs:800,allowUpperBody:false,baseline:null},
-  timing:{waiting:1.5,enter:3,hold:1.5,reveal:3,offset:.8,watch:12,exit:2,reset:.7,maxSession:50},
+  timing:{waiting:1.5,enter:6,fadeIn:.9,hold:1,reveal:8,offset:.8,watch:10,exit:2,reset:.7,maxSession:80},
   actors:{songaksi:{x:.21,y:.94,height:.82},mongdal:{x:.79,y:.94,height:.9}},
   debug:false
 };
@@ -16,6 +16,8 @@ export function sanitize(raw={}){
   c.detection={...c.detection,fps:clamp(d.fps,5,15,12),width:clamp(d.width,256,960,640),sensitivity:clamp(d.sensitivity,.1,.9,.55),holdMs:clamp(d.holdMs,600,6000,1800),stability:clamp(d.stability,.008,.12,.035),leaveMs:clamp(d.leaveMs,600,8000,2200),staleMs:clamp(d.staleMs,350,2500,800),allowUpperBody:d.allowUpperBody===true};
   if(d.baseline && ['hipY','torso','shoulderY'].every(k=>Number.isFinite(d.baseline[k])))c.detection.baseline={hipY:clamp(d.baseline.hipY,0,1,.6),torso:clamp(d.baseline.torso,.03,.8,.2),shoulderY:clamp(d.baseline.shoulderY,0,1,.4)};
   for(const k of Object.keys(c.timing))c.timing[k]=clamp(t[k],k==='offset'?0:k==='maxSession'?5:.2,k==='maxSession'?180:60,c.timing[k]);
+  c.timing.enter=clamp(t.enter,4.8,8,6);c.timing.reveal=clamp(t.reveal,6.4,10.57,8);
+  c.timing.offset=clamp(t.offset,0,3,.8);c.timing.fadeIn=Math.min(c.timing.fadeIn,c.timing.enter*.5);
   for(const name of Object.keys(c.actors)){
     const p=raw.actors?.[name]||{};c.actors[name]={x:clamp(p.x,.03,.97,c.actors[name].x),y:clamp(p.y,.45,1.15,.94),height:clamp(p.height,.25,1.4,c.actors[name].height)};
   }
@@ -23,5 +25,5 @@ export function sanitize(raw={}){
   c.calibrationDeviceId=typeof raw.calibrationDeviceId==='string'?raw.calibrationDeviceId.slice(0,250):'';
   return c;
 }
-export function loadConfig(storage=globalThis.localStorage){try{return sanitize(JSON.parse(storage.getItem('empty-seat-c-v1')||'{}'));}catch{return sanitize();}}
-export function saveConfig(config,storage=globalThis.localStorage){const c=sanitize(config);storage.setItem('empty-seat-c-v1',JSON.stringify(c));return c;}
+export function loadConfig(storage=globalThis.localStorage){try{return sanitize(JSON.parse(storage.getItem('empty-seat-walk-v2')||'{}'));}catch{return sanitize();}}
+export function saveConfig(config,storage=globalThis.localStorage){const c=sanitize(config);storage.setItem('empty-seat-walk-v2',JSON.stringify(c));return c;}
